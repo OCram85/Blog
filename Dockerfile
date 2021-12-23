@@ -1,4 +1,4 @@
-FROM klakegg/hugo:0.91.0-ext-ubuntu as builder
+FROM klakegg/hugo:0.91.1-ext-alpine-ci as builder
 COPY . /src
 #RUN ls -la
 WORKDIR /src
