@@ -14,3 +14,12 @@ yarn-error.log*
 
 ## Dependency directories
 node_modules/
+
+# git related
+.editorconfig
+.gitattributes
+.gitignore
+.gitmodules
+
+# VSCode
+.vscode/
