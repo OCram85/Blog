@@ -19,7 +19,7 @@ description = "A personal blog about PowerShell, Automation and more."
 
 [article]
   showDate = true
-  showDateUpdated = true
+  #showDateUpdated = true
   dateFormat = "2 January 2006"
   showAuthor = true
   showBreadcrumbs = false
