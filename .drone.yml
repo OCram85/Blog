@@ -1,0 +1,102 @@
+---
+kind: pipeline
+type: docker
+name: "Test Pipeline"
+
+trigger:
+  event:
+    exclude:
+      - tag
+
+steps:
+  - name: "Hugo test build"
+    image: klakegg/hugo:0.91.0-ext-ubuntu
+    commands:
+      - hugo --fgc --minify
+
+---
+kind: pipeline
+type: docker
+name: "Next Build Pipeline"
+
+trigger:
+  event:
+    exclude:
+      - pull_request
+  branch:
+    exclude:
+      - master
+
+depends_on:
+  - "Test Pipeline"
+
+steps:
+  - name: "Build (${DRONE_BRANCH} as next)"
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: hub_user
+      password:
+        from_secret: hub_passwd
+      repo: ocram85/blog
+      tags: "next"
+      dockerfile: Dockerfile
+
+  - name: "Trivy (next)"
+    image: aquasec/trivy
+    commands:
+      - "trivy image ocram85/blog:next"
+
+---
+kind: pipeline
+type: docker
+name: "Master Build Pipeline"
+
+trigger:
+  event:
+    exclude:
+      - pull_request
+      - tag
+  branch:
+    include:
+      - master
+
+depends_on:
+  - "Test Pipeline"
+
+steps:
+  - name: "Build (master)"
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: hub_user
+      password:
+        from_secret: hub_passwd
+      repo: ocram85/blog
+      auto_tag: true
+      dockerfile: Dockerfile
+
+  - name: "Trivy (latest)"
+    image: aquasec/trivy
+    commands:
+      - "trivy image ocram85/blog:latest"
+
+---
+kind: pipeline
+type: docker
+name: "Tags Pipeline"
+
+trigger:
+  event:
+    include:
+      - tag
+steps:
+  - name: "Build tag image"
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: hub_user
+      password:
+        from_secret: hub_passwd
+      repo: ocram85/blog
+      auto_tag: true
