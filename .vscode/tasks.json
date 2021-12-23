@@ -83,6 +83,28 @@
             "problemMatcher": [
                 "$pester"
             ]
+        },
+        {
+          "label": "Run dev Server",
+          "type": "shell",
+          "command": [
+            "hugo server --buildDrafts"
+          ],
+          "group": {
+            "kind": "test",
+            "isDefault": true
+          }
+        },
+        {
+          "label": "Build Site",
+          "type": "shell",
+          "command": [
+            "hugo"
+          ],
+          "group": {
+            "kind": "build",
+            "isDefault": true
+          }
         }
       ],
     "inputs": [
