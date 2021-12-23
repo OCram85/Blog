@@ -12,7 +12,7 @@ steps:
   - name: "Hugo test build"
     image: klakegg/hugo:0.91.0-ext-ubuntu
     commands:
-      - hugo --fgc --minify
+      - hugo --gc --minify
 
 ---
 kind: pipeline
