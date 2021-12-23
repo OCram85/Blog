@@ -1,5 +1,5 @@
 ---
-title: 'Impessum'
+title: 'Impressum'
 date: 2021-12-23T09:10:12+01:00
 draft: false
 # custom override for static pages
