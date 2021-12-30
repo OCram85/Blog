@@ -15,9 +15,11 @@ steps:
       - git submodule update --init --recursive
 
   - name: "Hugo test build"
-    image: klakegg/hugo:0.91.1-ext-alpine-ci
+    image: node:lts-buster-slim
     commands:
-      - hugo --gc --minify
+      - npm install
+      - npm run test
+      - npm run build
 
 ---
 kind: pipeline
