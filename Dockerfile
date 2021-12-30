@@ -1,11 +1,12 @@
-FROM klakegg/hugo:0.91.1-ext-alpine-ci as builder
+FROM node:lts-buster-slim as builder
 COPY . /src
 #RUN ls -la
 WORKDIR /src
 #RUN ls -a
-RUN hugo --gc --minify
+RUN npm install \
+  && npm run build
 
-FROM caddy:2.4.5-alpine
+FROM caddy:2.4.6-alpine
 LABEL maintainer="marco.blessing@googlemail.com"
 COPY --from=builder src/public /usr/share/caddy/
 HEALTHCHECK  --interval=15s --timeout=3s \
