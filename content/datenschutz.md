@@ -28,7 +28,7 @@ als „Onlineangebot“). Im Hinblick auf die verwendeten Begrifflichkeiten, wie
 
 ## Verantwortlicher
 
-```
+```console
 Marco Blessing
 Kapellenstraße 12
 77815 Bühl

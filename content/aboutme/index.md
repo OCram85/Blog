@@ -22,7 +22,7 @@ showEdit: false
 
 ### {{< icon "terminal" >}} Projects
 
-Take a look at this [Projects]() page to get an overview of my current work.
+Take a look at this [Projects](/) page to get an overview of my current work.
 
 ### {{< icon "heart" >}} Favorite Topics
 
