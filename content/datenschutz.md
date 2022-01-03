@@ -9,6 +9,7 @@ showWordCount: false
 showReadingTime: false
 showEdit: false
 sharingLinks: [null]
+showPagination: false
 ---
 
 > **Vom Websiteinhaber angepasst**

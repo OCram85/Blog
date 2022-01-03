@@ -9,6 +9,7 @@ showWordCount: false
 showReadingTime: false
 showEdit: false
 sharingLinks: [null]
+showPagination: false
 ---
 
 ## Angaben gemäß § 5 TMG:
