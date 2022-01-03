@@ -57,7 +57,7 @@ steps:
   - name: "Trivy (next)"
     image: aquasec/trivy
     commands:
-      - "trivy image ocram85/blog:next"
+      - "trivy image --exit-code 1 --no-progress ocram85/blog:next"
 
 ---
 kind: pipeline
