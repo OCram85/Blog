@@ -59,6 +59,14 @@ steps:
     commands:
       - "trivy image --exit-code 1 --no-progress ocram85/blog:next"
 
+  - name: "Trigger Service Update"
+    image: ocram85/portainer-serviceupdate
+    settings:
+      VERBOSE: true
+      URI: "https://portainer.ocram85.com"
+      TOKEN:
+        from_secret: NEXT_TOKEN
+
 ---
 kind: pipeline
 type: docker
@@ -98,6 +106,13 @@ steps:
     commands:
       - "trivy image --exit-code 1 --no-progress ocram85/blog:latest"
 
+  - name: "Trigger Service Update"
+    image: ocram85/portainer-serviceupdate
+    settings:
+      VERBOSE: true
+      URI: "https://portainer.ocram85.com"
+      TOKEN:
+        from_secret: TOKEN
 ---
 kind: pipeline
 type: docker
