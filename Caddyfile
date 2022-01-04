@@ -1,9 +1,7 @@
-:8088 {
+:8080 {
   root * /usr/share/caddy
   file_server
   encode gzip zstd
-  try_files {path}.html {path} /
-
   handle_errors {
         @404 {
             expression {http.error.status_code} == 404

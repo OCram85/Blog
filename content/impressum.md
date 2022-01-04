@@ -9,11 +9,12 @@ showWordCount: false
 showReadingTime: false
 showEdit: false
 sharingLinks: [null]
+showPagination: false
 ---
 
 ## Angaben gemäß § 5 TMG:
 
-```
+```console
 Marco Blessing
 Kapellenstraße 12
 77815 Bühl

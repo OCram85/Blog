@@ -15,9 +15,11 @@ steps:
       - git submodule update --init --recursive
 
   - name: "Hugo test build"
-    image: klakegg/hugo:0.91.1-ext-alpine-ci
+    image: node:lts-buster-slim
     commands:
-      - hugo --gc --minify
+      - npm install
+      - npm run test
+      - npm run build
 
 ---
 kind: pipeline
@@ -55,7 +57,7 @@ steps:
   - name: "Trivy (next)"
     image: aquasec/trivy
     commands:
-      - "trivy image ocram85/blog:next"
+      - "trivy image --exit-code 1 --no-progress ocram85/blog:next"
 
 ---
 kind: pipeline
@@ -94,7 +96,7 @@ steps:
   - name: "Trivy (latest)"
     image: aquasec/trivy
     commands:
-      - "trivy image ocram85/blog:latest"
+      - "trivy image --exit-code 1 --no-progress ocram85/blog:latest"
 
 ---
 kind: pipeline

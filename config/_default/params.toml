@@ -6,7 +6,7 @@
 # https://jpanther.github.io/congo/docs/configuration/#theme-parameters
 
 colorScheme = "avocado"
-# darkMode = "auto"
+darkMode = "true"
 # darkToggle = false
 # logo = "img/logo.jpg"
 description = "A personal blog about PowerShell, Automation and more."

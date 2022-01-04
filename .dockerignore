@@ -3,6 +3,7 @@ README.md
 CHANGELOG.md
 docker-compose.yml
 Dockerfile
+LICENSE
 
 # Node
 ## Logs
@@ -23,3 +24,7 @@ node_modules/
 
 # VSCode
 .vscode/
+
+# markdownlint dot files
+.markdownlint.json
+.markdownlintignore

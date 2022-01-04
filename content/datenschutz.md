@@ -9,6 +9,7 @@ showWordCount: false
 showReadingTime: false
 showEdit: false
 sharingLinks: [null]
+showPagination: false
 ---
 
 > **Vom Websiteinhaber angepasst**
@@ -28,7 +29,7 @@ als „Onlineangebot“). Im Hinblick auf die verwendeten Begrifflichkeiten, wie
 
 ## Verantwortlicher
 
-```
+```console
 Marco Blessing
 Kapellenstraße 12
 77815 Bühl
