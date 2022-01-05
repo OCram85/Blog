@@ -8,7 +8,7 @@
 colorScheme = "avocado"
 darkMode = "true"
 # darkToggle = false
-# logo = "img/logo.jpg"
+logo = "img/logo_square.png"
 description = "A personal blog about PowerShell, Automation and more."
 # mainSections = ["section1", "section2"]
 # robots = ""
