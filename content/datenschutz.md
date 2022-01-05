@@ -16,10 +16,10 @@ showPagination: false
 >
 > [Erstellt mit Datenschutz-Generator.de von RA Dr. Thomas Schwenke](https://datenschutz-generator.de)
 
-{: .box-note}
-<i class="fa fa-commenting icon-blue" aria-hidden="true"></i> **Anmerkung:**
-Änderungen in unserer Datenschutzerklärung finden Sie in Abschnitt [Änderungen](#Änderungen).
-Weitere Artikel zum Thema Datenschutz werden in der Kategorie [Privacy](tags#Privacy) veröffentlicht.
+{{< note >}}
+Änderungen in unserer Datenschutzerklärung finden Sie in Abschnitt [Änderungen](#änderungen).
+Weitere Artikel zum Thema Datenschutz werden in der Kategorie [Privacy](/tags/privacy/) veröffentlicht.
+{{< /note >}}
 
 Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten
 (nachfolgend kurz „Daten“) innerhalb unseres Onlineangebotes und der mit ihm verbundenen Webseiten, Funktionen und
