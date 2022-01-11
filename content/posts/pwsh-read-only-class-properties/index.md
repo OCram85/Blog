@@ -1,7 +1,12 @@
 ---
 title: 'PowerShell Read Only Class Properties'
 date: 2017-07-19T11:15:47+01:00
+showDateUpdated: true
+lastmod: 2022-01-11T14:37:54+01:00
 draft: false
+
+categories: ['PowerShell']
+tags: ['class', 'read-only', 'properties']
 # lastmod: 2021-12-23T11:15:47+01:00
 # showDateUpdated: true
 
@@ -351,7 +356,28 @@ And that's exactly what we wanted. We have hidden the the property `_Ready` and 
 I personally like using _script properties_. But I take is on step further and create all public properties with a
 separate method:
 
-{% gist OCram85/d673764614438493afaa5cd413999436 AddPublicMember.ps1 %}
+```powershell
+hidden AddPublicMember() {
+    $Members = $this | Get-Member -Force -MemberType Property -Name '_*'
+    ForEach ($Member in $Members) {
+        $PublicPropertyName = $Member.Name -replace '_', ''
+        # Define getter part
+        $Getter = "return `$this.{0}" -f $Member.Name
+        $Getter = [ScriptBlock]::Create($Getter)
+        # Define setter part
+        $Setter = "Write-Warning 'This is a readonly property.'"
+        $Setter = [ScriptBlock]::Create($Setter)
+
+        $AddMemberParams = @{
+            Name = $PublicPropertyName
+            MemberType = 'ScriptProperty'
+            Value = $Getter
+            SecondValue = $Setter
+        }
+        $this | Add-Member @AddMemberParams
+    }
+}
+```
 
 This avoids making errors if I work with multiple constructors. Without a method like `AddPublicMember` you are
 forced to define each public property in every constructor method.
@@ -360,6 +386,48 @@ All you have to do is to add the `AddPublicMember`method to your class definitio
 
 Finally our death start class looks like this:
 
-{{< gist OCram85 d673764614438493afaa5cd413999436>}}
+```powershell
+Class DeathStar {
+    [String]$Class = 'Space battle station'
+    [Int]$Width = '160000'
+    [String[]]$HyperDriveRating = @('Class 4', 'Class 20')
+    $Crew = @{
+        ImperialNavy = 342953
+        Stormtroopers = 25984
+    }
+    hidden [String]$_Ready = $null
 
-So what do you think? - Feel free to discuss this in the comment section down below.
+    hidden AddPublicMember() {
+        $Members = $this | Get-Member -Force -MemberType Property -Name '_*'
+        ForEach ($Member in $Members) {
+            $PublicPropertyName = $Member.Name -replace '_', ''
+            # Define getter part
+            $Getter = "return `$this.{0}" -f $Member.Name
+            $Getter = [ScriptBlock]::Create($Getter)
+            # Define setter part
+            $Setter = "Write-Warning 'This is a readonly property.'"
+            $Setter = [ScriptBlock]::Create($Setter)
+
+            $AddMemberParams = @{
+                Name = $PublicPropertyName
+                MemberType = 'ScriptProperty'
+                Value = $Getter
+                SecondValue = $Setter
+            }
+            $this | Add-Member @AddMemberParams
+        }
+    }
+
+    DeathStar () {
+        $this.AddPublicMember()
+        $this._Ready = $true
+    }
+
+    DeathStar ([int]$ImperialNavy, [int]$Stormtroopers) {
+        $this.AddPublicMember()
+        $this.Crew.ImperialNavy = $ImperialNavy
+        $this.Crew.StormTroopers = $Stormtroopers
+        $this._Ready = $true
+    }
+}
+```

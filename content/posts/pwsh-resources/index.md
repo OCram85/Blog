@@ -1,8 +1,8 @@
 ---
-title: 'A Journey to the PowerShell Citadel'
+title: 'A Journey to the PowerShell Citadel ✨🧙'
 date: 2017-12-14T14:37:54+01:00
 showDateUpdated: true
-lastmod: 2021-12-22T14:37:54+01:00
+lastmod: 2022-01-11T08:37:54+01:00
 draft: false
 categories: ['PowerShell']
 tags: ['resources']
@@ -14,7 +14,8 @@ draft: false
 ## The Journey Begins Now Young Novice
 
 In this section you find the most basic stuff. It's aimed to help beginners who just got in touch with PowerShell.
-All external links refer to the latest production ready PowerShell version. This is currently the version `5.1`.
+All external links refer to the latest production ready PowerShell version.
+This is currently the version `7.2.1 LTS`. If you're force to use PSSnapins you still have to use the version `5.1`.
 
 ### Docs
 
@@ -31,9 +32,9 @@ All external links refer to the latest production ready PowerShell version. This
 
 [official documentation]: https://docs.microsoft.com/en-us/powershell
 [docs.microsoft.com]: https://docs.microsoft.com
-[powershell reference]: https://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting?view=powershell-5.1
-[about pages]: https://docs.microsoft.com/de-de/powershell/module/microsoft.powershell.core/about/about_aliases?view=powershell-5.1
-[the monad manifesto]: https://www.gitbook.com/book/devops-collective-inc/the-monad-manifesto-annotated/details
+[powershell reference]: https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.2
+[about pages]: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about?view=powershell-7.2
+[the monad manifesto]: https://devops-collective-inc.gitbook.io/the-monad-manifesto-annotated/
 
 {{< note >}}
 You can also display the \_about\_ pages with a PowerShell function itself. To get a list of all about
@@ -51,7 +52,7 @@ Google around or ask questions in communities like:
 - [PowerShell.org] - A very helpful and friendly community.
 
 [stackoverflow]: https://stackoverflow.com/questions/tagged/powershell
-[powershell.org]: https://powershell.org/forums
+[powershell.org]: https://forums.powershell.org/
 
 ## Acolyte
 
@@ -93,20 +94,23 @@ In this phase you should also start working with additional tools like:
   - [Visual Studio Code](https://code.visualstudio.com/)
 - CI/CD Environments:
   - [Github](https://github.com/)
-  - [Phabricator](https://www.phacility.com/phabricator/)
-  - [Jenkins](https://jenkins.io/)
+  - [Gitea](https://gitea.io/)
+  - [Drone](https://www.drone.io/)
   - [AppVeyor](https://www.appveyor.com/)
   - [GoCD](https://www.gocd.org/)
 - Helper
   - [ILSpy](http://ilspy.net/)
 - Coverage Reports
   - [Coveralls.io](https://coveralls.io/)
+  - [Codecov](https://codecov.com)
 
 {{< note >}}
-If you develop open source projects I recommend using [Github](https://github.com/) in combination with
-[AppVeyor](https://www.appveyor.com/). You don't need to maintain any additional infrastructure and they are free
-for public repositories. Otherwise I like working with Phabricator as _Git Server_ and project coordination.
-If you take this path you definitely need a build server like Jenkins.
+If you develop open source projects I recommend using [Github](https://github.com/) in combination with its
+[Actions](https://github.com/features/actions) feature or [Drone](https://www.drone.io/).
+You don't need to maintain any additional infrastructure and they are free for public repositories.
+Otherwise I like working with Gitea as _Git Server_ and project coordination. If you take this path you definitely
+need a build server Drone. I definitely recommend running these as container in a Docker or even Kubernetes
+environment.
 {{< /note >}}
 
 ## Maester
@@ -121,16 +125,15 @@ spread the work of PowerShell while teaching others!
   Microsoft and PowerShell knowledge.
 - [DonJones.com] - If you never heard about DonJones I can't help you. He is one of the biggest
   maesters in the PowerShell citadel and a great inspiration.
-- [Kevin Marquette on PowerShell Theory] - A great blog about various PowerShell
-  topics.
+- [PowerShellExplained] - A great blog about various PowerShell topics by Kevin Marquette.
 - [keithhill.wordpress.com] - One of the 4 maintainers of the [PowerShell Extension]
   for [VS Code].
 - [xainey.github.io] - Michael Willis blog contains great articles about PowerShell classes,
   module creation and building frontend for PowerShell. It's high quality content and easy to follow expert topics.
 
 [dille.name]: http://dille.name
-[donjones.com]: https://donjones.com/
-[kevin marquette on powershell theory]: https://kevinmarquette.github.io/
+[donjones.com]: https://donjones.com/powershell/
+[powershellexplained]: https://powershellexplained.com/
 [keithhill.wordpress.com]: http://rkeithhill.wordpress.com
 [xainey.github.io]: https://xainey.github.io/
 [powershell extension]: https://github.com/PowerShell/vscode-powershell
@@ -138,7 +141,7 @@ spread the work of PowerShell while teaching others!
 
 ### Get in touch with the Archmaesters
 
-Take a look at the [PowerShell Slack Team](http://slack.poshcode.org/) if your searching other active PowerShell experts.
+Take a look at the [PowerShell Slack Team](http://powershell.slack.com/) if your searching other active PowerShell experts.
 
 ## Additional Resources
 
