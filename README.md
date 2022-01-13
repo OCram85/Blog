@@ -6,7 +6,7 @@
 <p align="center">
   <a href="https://ocram85.com/">
     <img src="https://raw.githubusercontent.com/OCram85/Blog/master/assets/img/logo_square.png" alt="OCram85.com Logo" width="300" height="300">
-  <a>
+  </a>
 </p>
 
 <h1 align="center">
