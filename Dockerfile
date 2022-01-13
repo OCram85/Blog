@@ -6,10 +6,10 @@ WORKDIR /src
 RUN npm install \
   && npm run build
 
-FROM caddy:2.4.6-alpine
+FROM nginx:1.21.5-alpine
 LABEL maintainer="marco.blessing@googlemail.com"
-COPY --from=builder /src/Caddyfile /etc/caddy/Caddyfile
-COPY --from=builder src/public /usr/share/caddy/
 HEALTHCHECK  --interval=15s --timeout=3s \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
-#RUN ls -la /usr/share/caddy/
+  CMD wget --no-verbose --tries=1 --spider http://localhost:80/ || exit 1
+COPY --from=builder src/public /usr/share/nignx/html/
+COPY nginx.conf /etc/nginx/nginx.conf
+
