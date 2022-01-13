@@ -1,5 +1,10 @@
+<p align="right">
+  <img src="http://forthebadge.com/images/badges/built-with-love.svg">
+  <img src="http://forthebadge.com/images/badges/for-you.svg">
+</p>
+
 <p align="center">
-  <a href="https://getdoks.org/">
+  <a href="https://ocram85.com/">
     <img src="https://raw.githubusercontent.com/OCram85/Blog/master/assets/img/logo_square.png" alt="OCram85.com Logo" width="300" height="300">
   <a>
 </p>
@@ -26,10 +31,13 @@
 
 ## Tags
 
-- `latest`
-  - This tag contains currently active source for [OCram85.com](https://OCram85.com) and will be updated by changes on the master branch
-- `next`
-  - The next tag is used for testing any code changes on development branches and pull request. Site preview is available on [next.OCram85.com](https://next.OCram85.com)
+### `latest`
+
+This tag contains currently active source for [OCram85.com](https://OCram85.com) and will be updated by changes on the master branch
+
+### `next`
+
+The next tag is used for testing any code changes on development branches and pull request. Site preview is available on [next.OCram85.com](https://next.OCram85.com)
 
 ## Content
 
