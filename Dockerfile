@@ -8,7 +8,7 @@ RUN npm install \
 
 FROM nginx:1.21.5-alpine
 LABEL maintainer="marco.blessing@googlemail.com"
-HEALTHCHECK  --interval=15s --timeout=3s \
+HEALTHCHECK  --interval=15s --timeout=5s \
   CMD wget --no-verbose --tries=1 --spider http://localhost:80/ || exit 1
 COPY --from=builder src/public /usr/share/nignx/html/
 COPY nginx.conf /etc/nginx/nginx.conf
