@@ -8,8 +8,8 @@
     "check": "exec-bin node_modules/.bin/hugo/hugo version",
     "clean": "rimraf public/",
     "lint:markdown": "markdownlint \"*.md\" \"content/**/*.md\"",
-    "start": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender",
-    "server": "exec-bin node_modules/.bin/hugo/hugo server",
+    "start": "npm run server",
+    "server": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 -D",
     "test": "npm run lint:markdown",
     "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo"
   },
