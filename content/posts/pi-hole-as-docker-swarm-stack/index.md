@@ -121,6 +121,8 @@ But this publishes the ports on the ingress / overlay network and causes pihole 
 connected clients list. So we have to use the long format with the `mode` set to `host`. This of cause does only work
 if there is no other process already using the listed ports.
 
+{{< figure src="settings.png" width="450" height="800" >}}
+
 Additionally you have to set `Permit all origins` option under `Settings` -> `DNS tab` -> `Interface settings`.
 
 That's it. Now you're running Pi-Hole as a docker swarm service as DNS Server. You can now start defining your
