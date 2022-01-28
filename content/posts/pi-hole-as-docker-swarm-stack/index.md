@@ -2,6 +2,8 @@
 title: 'Run Pi-Hole as Docker Swarm Stack'
 date: 2022-01-28T08:54:43+01:00
 draft: false
+categories: ['Docker']
+tags: ['pihole', 'swarm', 'stack']
 # lastmod: 2022-01-28T08:54:43+01:00
 # showDateUpdated: true
 
@@ -13,6 +15,8 @@ draft: false
 # showEdit: false
 # sharingLinks: [null]
 ---
+
+{{< figure src="black-hole.jpg" width="600" height="800" caption="Photo by Kamesh Vedula on Unsplash." >}}
 
 ## Intro
 
@@ -117,4 +121,7 @@ But this publishes the ports on the ingress / overlay network and causes pihole 
 connected clients list. So we have to use the long format with the `mode` set to `host`. This of cause does only work
 if there is no other process already using the listed ports.
 
-Additionally you have to set `Permit all origins` option under `settings` -> `dns tab` -> `Interface settings`.
+Additionally you have to set `Permit all origins` option under `Settings` -> `DNS tab` -> `Interface settings`.
+
+That's it. Now you're running Pi-Hole as a docker swarm service as DNS Server. You can now start defining your
+Pi-Hole groups and filter the clients.
