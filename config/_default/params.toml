@@ -6,12 +6,16 @@
 # https://jpanther.github.io/congo/docs/configuration/#theme-parameters
 
 colorScheme = "avocado"
-darkMode = "true"
-# darkToggle = false
-logo = "img/logo_square.png"
-description = "A personal blog about PowerShell, Automation and more."
+defaultAppearance = "dark" # valid options: light or dark
+autoSwitchAppearance = false
+showAppearanceSwitcher = true
+
+enableSearch = true
+enableCodeCopy = true
+
 # mainSections = ["section1", "section2"]
 # robots = ""
+showScrollToTop = true
 
 [homepage]
   layout = "profile" # valid options: page, profile, custom
@@ -19,8 +23,7 @@ description = "A personal blog about PowerShell, Automation and more."
 
 [article]
   showDate = true
-  #showDateUpdated = true
-  dateFormat = "2 January 2006"
+  showDateUpdated = false
   showAuthor = true
   showBreadcrumbs = false
   showDraftLabel = true
@@ -29,20 +32,24 @@ description = "A personal blog about PowerShell, Automation and more."
   editAppendPath = true
   showHeadingAnchors = true
   showPagination = true
+  invertPagination = false
   showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = false
   showWordCount = true
   sharingLinks = ["facebook", "twitter", "pinterest", "reddit", "linkedin", "email"]
 
 [list]
   showBreadcrumbs = false
   showSummary = false
+  showTableOfContents = false
   groupByYear = true
-
-[taxonomy]
-  showTermCount = true
 
 [sitemap]
   excludedKinds = ["taxonomy", "term"]
+
+[taxonomy]
+  showTermCount = true
 
 [fathomAnalytics]
   # site = "ABC12345"
