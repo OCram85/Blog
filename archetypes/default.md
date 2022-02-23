@@ -11,6 +11,8 @@ draft: true
 # showAuthor: false
 # showWordCount: false
 # showReadingTime: false
+# showTableOfContents: false
+# showTaxonomies: true
 # showEdit: false
 # sharingLinks: [null]
 ---
