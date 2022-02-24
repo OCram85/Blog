@@ -14,6 +14,7 @@ showReadingTime: false
 showEdit: false
 #sharingLinks: [null]
 showPagination: false
+showTableOfContents: false
 ---
 
 {{< figure src="me.jpg" width="1200" height="800" >}}
