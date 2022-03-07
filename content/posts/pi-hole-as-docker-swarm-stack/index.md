@@ -1,5 +1,5 @@
 ---
-title: 'Run Pi-Hole as Docker Swarm Stack'
+title: 'Run Pi-hole as Docker Swarm Stack'
 date: 2022-01-28T08:54:43+01:00
 draft: false
 categories: ['Docker']
@@ -20,11 +20,11 @@ tags: ['pihole', 'swarm', 'stack']
 
 ## Intro
 
-Many of you already know [Pi-Hole](https://pi-hole.net/) as a trusted DNS firewall solution in your home labs. But
-what if your home lab should just provide containerized services? - I know, running Pi-Hole as a container isn't
+Many of you already know [Pi-hole](https://pi-hole.net/) as a trusted DNS firewall solution in your home labs. But
+what if your home lab should just provide containerized services? - I know, running Pi-hole as a container isn't
 new. In fact, the developer community already provides [official images](https://hub.docker.com/r/pihole/pihole).
 
-In this post I want to show you why you should run Pi-Hole (or even every container) in a docker swarm configuration
+In this post I want to show you why you should run Pi-hole (or even every container) in a docker swarm configuration
 as a defined stack.
 
 So let's begin with some worts about the Docker Swarm Mode.
@@ -49,7 +49,7 @@ On the other hand, Kubernetes isn't always needed and comes not only with mor fe
 knowledge about the underlying techniques and faces you with much more challenges.
 {{< /alert >}}
 
-### Pi-Hole Stack
+### Pi-hole Stack
 
 I use [traefik](https://traefik.io/traefik/) on my docker swarm clusters as reverse proxy. Like every reverse proxy
 traefik handles the request and routes it to to the target service. It terminates the https traffic and manages the
@@ -125,5 +125,5 @@ if there is no other process already using the listed ports.
 
 Additionally you have to set `Permit all origins` option under `Settings` -> `DNS tab` -> `Interface settings`.
 
-That's it. Now you're running Pi-Hole as a docker swarm service as DNS Server. You can now start defining your
-Pi-Hole groups and filter the clients.
+That's it. Now you're running Pi-hole as a docker swarm service as DNS Server. You can now start defining your
+Pi-hole groups and filter the clients.
