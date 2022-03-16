@@ -4,7 +4,7 @@ date: 2022-03-16T09:24:56+01:00
 #draft: true
 
 categories: ['PowerShell']
-tags: ['parameter', 'validation']
+tags: ['parameter', 'validation', 'PSTypeName']
 # lastmod: 2022-03-16T09:24:56+01:00
 # showDateUpdated: true
 
