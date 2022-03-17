@@ -3,6 +3,9 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 
+categories: ['']
+tags: ['']
+
 # lastmod: {{ .Date}}
 # showDateUpdated: true
 

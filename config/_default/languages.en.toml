@@ -47,6 +47,7 @@ dateFormat = "2 January 2006"
   #   { slack = "https://workspace.url/team/userid" },
   #   { snapchat = "https://snapchat.com/add/username" },
   #   { soundcloud = "https://soundcloud.com/username" },
+    { stack-overflow = "https://stackoverflow.com/users/5222635/ocram85" },
   #   { steam = "https://steamcommunity.com/profiles/userid" },
   #   { telegram = "https://t.me/username" },
   #   { tiktok = "https://tiktok.com/@username" },

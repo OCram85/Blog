@@ -53,11 +53,25 @@ steps:
       repo: ocram85/blog
       tags: "next"
       dockerfile: Dockerfile
+      build_args:
+        - NODE_BASE=lts-buster-slim
+        - NGINX_BASE=1.21.6-alpine
 
   - name: "Trivy (next)"
     image: aquasec/trivy
+    failure: ignore
     commands:
-      - "trivy image --exit-code 1 --no-progress ocram85/blog:next"
+      - |
+        trivy image \
+          --severity UNKNOWN,LOW,MEDIUM \
+          --no-progress \
+          ocram85/blog:next
+      - |
+        trivy image \
+          --exit-code 1 \
+          --severity HIGH,CRITICAL \
+          --no-progress \
+          ocram85/blog:next
 
   - name: "Trigger Service Update"
     image: ocram85/portainer-serviceupdate
@@ -100,11 +114,24 @@ steps:
       repo: ocram85/blog
       auto_tag: true
       dockerfile: Dockerfile
+      build_args:
+        - NODE_BASE=lts-buster-slim
+        - NGINX_BASE=1.21.6-alpine
 
   - name: "Trivy (latest)"
     image: aquasec/trivy
     commands:
-      - "trivy image --exit-code 1 --no-progress ocram85/blog:latest"
+      - |
+        trivy image \
+          --severity UNKNOWN,LOW,MEDIUM \
+          --no-progress \
+          ocram85/blog:latest
+      - |
+        trivy image \
+          --exit-code 1 \
+          --severity HIGH,CRITICAL \
+          --no-progress \
+          ocram85/blog:latest
 
   - name: "Trigger Service Update"
     image: ocram85/portainer-serviceupdate
