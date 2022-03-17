@@ -53,6 +53,9 @@ steps:
       repo: ocram85/blog
       tags: "next"
       dockerfile: Dockerfile
+      build_args:
+        - NODE_BASE=lts-buster-slim
+        - NGINX_BASE=1.21.6-alpine
 
   - name: "Trivy (next)"
     image: aquasec/trivy
@@ -111,6 +114,9 @@ steps:
       repo: ocram85/blog
       auto_tag: true
       dockerfile: Dockerfile
+      build_args:
+        - NODE_BASE=lts-buster-slim
+        - NGINX_BASE=1.21.6-alpine
 
   - name: "Trivy (latest)"
     image: aquasec/trivy
