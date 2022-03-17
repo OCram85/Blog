@@ -58,7 +58,7 @@ steps:
         - NGINX_BASE=1.21.6-alpine
 
   - name: "Trivy (next)"
-    image: aquasec/trivy
+    image: aquasec/trivy:0.24.3
     failure: ignore
     commands:
       - |
@@ -119,7 +119,8 @@ steps:
         - NGINX_BASE=1.21.6-alpine
 
   - name: "Trivy (latest)"
-    image: aquasec/trivy
+    image: aquasec/trivy:0.24.3
+    failure: ignore
     commands:
       - |
         trivy image \
