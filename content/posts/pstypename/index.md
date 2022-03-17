@@ -23,8 +23,8 @@ tags: ['parameter', 'validation', 'PSTypeName']
 
 ## 🖼️ Intro
 
-`PSCustomObject`s with customized _TypeNames_ can be validated with the parameter
-attribute `[PSTypeName()]`.
+This post explains how to use `PSCustomObject`s as function parameters. We compare the basic usage with an
+advanced one using the `[PSTypeName()]` parameter attribute.
 
 ## 🗑️ Well-Known Workflow
 
