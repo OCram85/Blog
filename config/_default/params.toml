@@ -35,7 +35,7 @@ showScrollToTop = true
   invertPagination = false
   showReadingTime = true
   showTableOfContents = true
-  showTaxonomies = false
+  showTaxonomies = true
   showWordCount = true
   sharingLinks = ["facebook", "twitter", "pinterest", "reddit", "linkedin", "email"]
 
