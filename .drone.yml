@@ -76,7 +76,7 @@ steps:
   - name: "Trigger Service Update"
     image: ocram85/portainer-serviceupdate
     settings:
-      VERBOSE: true
+      #VERBOSE: true
       URI: "https://portainer.ocram85.com"
       TOKEN:
         from_secret: NEXT_TOKEN
@@ -137,7 +137,7 @@ steps:
   - name: "Trigger Service Update"
     image: ocram85/portainer-serviceupdate
     settings:
-      VERBOSE: true
+      #VERBOSE: true
       URI: "https://portainer.ocram85.com"
       TOKEN:
         from_secret: TOKEN
