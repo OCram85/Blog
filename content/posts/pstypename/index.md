@@ -5,9 +5,8 @@ date: 2022-03-16T09:24:56+01:00
 
 categories: ['PowerShell']
 tags: ['parameter', 'validation', 'PSTypeName']
-# lastmod: 2022-03-16T09:24:56+01:00
-# showDateUpdated: true
-
+lastmod: 2022-03-22T09:00:00+01:00
+showDateUpdated: true
 # custom overrides for pages
 # showDate: false
 # showAuthor: false
@@ -97,7 +96,8 @@ function Invoke-Launch {
 }
 ```
 
-This common pattern could fail whenever someone changes your object properties. If the _LengthInMeter_ property is missing you ran into an error. E.g.:
+This common pattern could fail whenever someone changes your object properties. If the _LengthInMeter_ property is
+missing you ran into an error. E.g.:
 
 ```console
 > $Rocinante = [PSCustomObject]@{ foo = 'bar' }
@@ -105,10 +105,12 @@ This common pattern could fail whenever someone changes your object properties. 
 ```
 
 {{< note >}}
-Keep in mind - Because we are using here custom objects and not class instances, we can not use `Rocinante` as a parameter type like `[Rocinante]$Ship` which would solve this immediately.
+Keep in mind - Because we are using here custom objects and not class instances, we can not use `Rocinante` as a
+parameter type like `[Rocinante]$Ship` which would solve this immediately.
 {{< /note >}}
 
-To fix this we can use the `[PSTypeName()]` parameter attribute, to ensure an object with the correct type name is used. This doesn't verify your parameters but minimize the risk for using invalid parameter objects.
+To fix this we can use the `[PSTypeName()]` parameter attribute, to ensure an object with the correct type name is
+used. This doesn't verify your parameters but minimize the risk for using invalid parameter objects.
 
 ## 🛡️ PSTypeName Usage
 
@@ -164,7 +166,8 @@ function Invoke-Launch {
   param (
     [Parameter(Mandatory = $true)]
     [ValidateNotNullOrEmpty()]
-    [PSTypeName('Ship.Corvette.LightFrigate')]$Ship
+    [PSTypeName('Ship.Corvette.LightFrigate')]
+    [PSCustomObject]$Ship
   )
 
   begin {}
@@ -235,4 +238,65 @@ function New-LightFrigate {
 }
 
 $Rocinante = New-LightFrigate -Name 'Rocinante' -Registry 'DE-MB2' -HullNumber '158'
+```
+
+## 📌 Appendix
+
+Functions using the `[PSTypeName()]` validation should still define a parameter type. I've added the
+`[PSCustomObject]` type for the _Ship_ parameter in _Invoke-Launch_.
+
+You can also use a PSCustomObject collection in combination with `[PSTypeName()]` as function parameter:
+
+```powershell
+function Invoke-Launch {
+  [CmdletBinding()]
+  param (
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+    [ValidateNotNullOrEmpty()]
+    [PSTypeName('Ship.Corvette.LightFrigate')]
+    [PSCustomObject[]]$Ship
+  )
+
+  begin {
+    $DockLength = 50
+  }
+
+  process {
+    foreach ($i in $Ship) {
+      if ($Ship.LengthInMeter -gt $DockLength) {
+        Write-Error -Message "Ship doesn't fit in the docking station." -ErrorAction 'Stop'
+      }
+      Write-Information -MessageData ('Launching Ship 🎇🚀 {0} ({1}) ...🪐' -f $i.Name, $i.Registry ) -InformationAction 'Continue'
+    }
+
+  }
+
+  end {}
+}
+
+```
+
+```bash
+# Creating our ship objects.
+> $Rocinante = New-LightFrigate -Name 'Rocinante' -Registry 'DE-MB2' -HullNumber '158'
+> $XWing = New-LightFrigate -Name 'XWing1' -Registry 'DE-XW1' -HullNumber '43'
+# Adding an invalid ship object for testing the validation.
+> $InvalidShip = [PSCustomObject]@{ Name = 'Invalid'}
+# Creating our ship collection.
+> $LaunchGroup = @($Rocinante, $XWing, $InvalidShip)
+
+# Calling Invoke-Launch with named parameter binding.
+# An invalid array item blocks running the script for all other items. This is caused by the validation which runs
+# prior the execution.
+> Invoke-Launch -Ship $LaunchGroup
+Invoke-Launch: Cannot bind argument to parameter 'Ship', because PSTypeNames of the argument do not match the
+PSTypeName required by the parameter: Ship.Corvette.LightFrigate.
+
+# Calling Invoke-Launch with passing the parameter from pipeline.
+# This ensures processing the valid items.
+> $LaunchGroup | Invoke-Launch
+Launching Ship 🎇🚀 Rocinante (DE-MB2) ...🪐
+Launching Ship 🎇🚀 XWing1 (DE-XW1) ...🪐
+Invoke-Launch: The input object cannot be bound to any parameters for the command either because the command does
+not take pipeline input or the input and its properties do not match any of the parameters that take pipeline input.
 ```
