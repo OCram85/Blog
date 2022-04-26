@@ -1,5 +1,5 @@
 ---
-title: 'How to get and use your PowerShell Module Base.'
+title: 'How to get your PowerShell Module Base root path'
 date: 2022-03-21T09:14:41+01:00
 #draft: true
 
@@ -23,7 +23,7 @@ tags: ['ModuleBase', 'config']
 
 ## 🖼️ Intro
 
-This article explains with a practical example how to determine and use the current module base path:
+This article explains with a practical example how to determine and use the current module base path.
 
 Sometimes you want to use a basic config file for your module. This config file could be used to define basic
 settings for your module. These module wide default settings should placed and shipped within your module.
@@ -55,8 +55,8 @@ Let's assume you start a new module and you need multiple config keys to work wi
 
 ## 🔎 `Get-ConfigValue` helper function
 
-Now you can use `$MyInvocation.MyCommand.Module.ModuleBase` with a helper function to parse the path to your config
-file and return your stored default values:
+Now you can use `$MyInvocation.MyCommand.Module.ModuleBase` with a helper function, to parse the path to your config
+file, and return the stored default values:
 
 ```powershell
 function Get-ConfigValue {
@@ -112,7 +112,7 @@ function Get-ConfigValue {
 ## 💭 Final Thoughts
 
 All you need to to is using the `Get-ConfigValue -FromKey '<example key>'` in your functions to get any value
-defined in you config file.
+defined in your config file.
 
 As far as I know, that's the simplest way to get your module root and using it with a config file.
 
