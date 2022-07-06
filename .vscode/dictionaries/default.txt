@@ -1,5 +1,0 @@
-CAFS
-gitea
-gitlocal
-hashtable
-umami
